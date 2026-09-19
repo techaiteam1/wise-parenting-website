@@ -5,6 +5,7 @@ export type Resource = {
   format: string;
   accent: "lavender" | "rose" | "plum";
   href: string;
+  filename: string;
 };
 
 export type Program = {
@@ -26,28 +27,49 @@ export type Testimonial = {
 
 export const resources: Resource[] = [
   {
-    title: "The Pause Practice",
-    description: "A gentle reflection guide for the moments when your reactions feel bigger than you intended.",
-    category: "Emotional regulation",
+    title: "Know Yourself",
+    description: "A reflective guide for noticing your patterns, emotional needs, and inner parenting landscape.",
+    category: "Self-awareness",
     format: "8-page guide",
     accent: "lavender",
-    href: "#contact",
+    href: "/pdfs/know-yourself.pdf",
+    filename: "know-yourself.pdf",
   },
   {
-    title: "Understanding Your Triggers",
-    description: "Thoughtful prompts to help you notice patterns with curiosity instead of self-criticism.",
-    category: "Self-awareness",
+    title: "Know Your Child",
+    description: "A gentle resource for understanding your child's needs, temperament, and behaviour with more clarity.",
+    category: "Child development",
     format: "Reflection workbook",
     accent: "rose",
-    href: "#contact",
+    href: "/pdfs/know-your-child.pdf",
+    filename: "know-your-child.pdf",
   },
   {
-    title: "Repair After a Hard Moment",
-    description: "Simple, compassionate language for reconnecting with your child after things feel difficult.",
+    title: "Connection",
+    description: "Practical prompts for building emotional safety and reconnecting through everyday moments.",
     category: "Connection",
     format: "Conversation guide",
     accent: "plum",
-    href: "#contact",
+    href: "/pdfs/connection.pdf",
+    filename: "connection.pdf",
+  },
+  {
+    title: "I Yelled Again",
+    description: "A compassionate reset for repairing after anger and understanding what happened beneath the reaction.",
+    category: "Repair",
+    format: "Reflection guide",
+    accent: "lavender",
+    href: "/pdfs/i-yelled-again.pdf",
+    filename: "i-yelled-again.pdf",
+  },
+  {
+    title: "Grow as a Family",
+    description: "A simple guide for nurturing family connection, shared growth, and calmer rhythms at home.",
+    category: "Family growth",
+    format: "Practice guide",
+    accent: "rose",
+    href: "/pdfs/grow-as-a-family.pdf",
+    filename: "grow-as-a-family.pdf",
   },
 ];
 

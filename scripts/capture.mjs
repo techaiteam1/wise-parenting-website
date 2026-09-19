@@ -8,6 +8,18 @@ const outputDir = path.join(process.cwd(), "design-review");
 
 await mkdir(outputDir, { recursive: true });
 
+async function loadFullPage(page) {
+  await page.evaluate(async () => {
+    const step = Math.max(window.innerHeight * 0.75, 400);
+    for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((resolve) => setTimeout(resolve, 120));
+    }
+    window.scrollTo(0, 0);
+  });
+  await page.waitForLoadState("networkidle");
+}
+
 const targets = [
   { name: "home-desktop", width: 1440, height: 1000 },
   { name: "home-mobile", width: 390, height: 844, isMobile: true },
@@ -33,6 +45,7 @@ for (const target of targets) {
     await page.keyboard.press("Escape");
   }
 
+  await loadFullPage(page);
   await page.screenshot({ path: path.join(outputDir, `${target.name}.png`), fullPage: true });
 
   const report = await page.evaluate(() => ({
