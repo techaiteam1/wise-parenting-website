@@ -5,8 +5,21 @@ import path from "node:path";
 const executablePath = "C:\\Users\\TahaNaqvi\\AppData\\Local\\ms-playwright\\chromium-1234\\chrome-win64\\chrome.exe";
 const browser = await chromium.launch({ executablePath, headless: true });
 const outputDir = path.join(process.cwd(), "design-review");
+const baseUrl = process.env.BASE_URL ?? "http://127.0.0.1:3000";
 
 await mkdir(outputDir, { recursive: true });
+
+async function loadFullPage(page) {
+  await page.evaluate(async () => {
+    const step = Math.max(window.innerHeight * 0.75, 400);
+    for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((resolve) => setTimeout(resolve, 120));
+    }
+    window.scrollTo(0, 0);
+  });
+  await page.waitForLoadState("networkidle");
+}
 
 const targets = [
   { name: "home-desktop", width: 1440, height: 1000 },
@@ -23,7 +36,7 @@ for (const target of targets) {
   const browserErrors = [];
   page.on("pageerror", (error) => browserErrors.push(error.message));
 
-  await page.goto("http://127.0.0.1:3000", { waitUntil: "networkidle" });
+  await page.goto(baseUrl, { waitUntil: "networkidle" });
 
   if (target.isMobile) {
     const menuButton = page.locator(".menu-toggle");
@@ -33,6 +46,7 @@ for (const target of targets) {
     await page.keyboard.press("Escape");
   }
 
+  await loadFullPage(page);
   await page.screenshot({ path: path.join(outputDir, `${target.name}.png`), fullPage: true });
 
   const report = await page.evaluate(() => ({

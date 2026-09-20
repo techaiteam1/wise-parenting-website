@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Arrow, Download, Spark } from "@/components/Icons";
+import { ContactForm } from "@/components/ContactForm";
+import { Arrow, Download, InstagramIcon, MailIcon, Spark, WhatsAppIcon } from "@/components/Icons";
 import { Header } from "@/components/Header";
 import { programs, resources, testimonials } from "@/data/content";
 
@@ -89,7 +90,7 @@ export default function Home() {
           <div className="framework-heading reveal">
             <div>
               <p className="eyebrow light"><span /> The wise parenting framework</p>
-              <h2 id="framework-title" >A way of seeing the whole relationship — not only the behaviour.</h2>
+              <h2 id="framework-title">A way of seeing the whole relationship — not only the behaviour.</h2>
             </div>
           </div>
 
@@ -139,14 +140,15 @@ export default function Home() {
               </div>
               <div className="resource-body">
                 <div className="meta-row"><span>{resource.category}</span><span>{resource.format}</span></div>
-                <h3>{resource.title}</h3>
+                {/* <h3>{resource.title}</h3> */}
+                <br/>
                 <p>{resource.description}</p>
-                <a href={resource.href}>View resource <Download /></a>
+                <a href={resource.href} download={resource.filename}>Download PDF <Download /></a>
               </div>
             </article>
           ))}
         </div>
-        <div className="section-bottom-note">More resources will be added with care, not clutter.</div>
+        <div className="section-bottom-note">Download the guide that meets you where you are today.</div>
       </section>
 
       <section id="programs" className="programs section-space" aria-labelledby="programs-title">
@@ -172,8 +174,8 @@ export default function Home() {
                   <div><small>When</small><span>{program.date}</span></div>
                   <div><small>Investment</small><span>{program.price}</span></div>
                 </div>
-                <a className={program.featured ? "button button-light" : "round-link"} href={program.href} aria-label={`${program.ctaLabel}: ${program.title}`}>
-                  {program.featured && <span>{program.ctaLabel}</span>}<Arrow />
+                <a className={program.featured ? "round-link round-link-light" : "round-link"} href={program.href} aria-label={`${program.ctaLabel}: ${program.title}`}>
+                  <Arrow />
                 </a>
               </article>
             ))}
@@ -212,20 +214,12 @@ export default function Home() {
             <h2 id="contact-title">Let&apos;s talk about your parenting journey.</h2>
             <p>If something here feels familiar, you&apos;re welcome to reach out. There is no pressure to have the right words or know exactly what you need.</p>
             <div className="contact-links">
-              <a href="https://wa.me/+923312796944" aria-label="Contact Alizah on WhatsApp"><span>WhatsApp</span><Arrow /></a>
-              <a href="https://instagram.com" aria-label="Visit wise parenting on Instagram"><span>Instagram</span><Arrow /></a>
-              <a href="mailto:alizataha.wiseparenting@gmail.com"><span>Email</span><Arrow /></a>
+              <a href="https://wa.me/+923312796944" aria-label="Contact Alizah on WhatsApp"><span><WhatsAppIcon />WhatsApp</span><Arrow /></a>
+              <a href="https://instagram.com/wise_parenting._/" aria-label="Visit wise parenting on Instagram"><span><InstagramIcon />Instagram</span><Arrow /></a>
+              <a href="mailto:alizataha.wiseparenting@gmail.com"><span><MailIcon />Email</span><Arrow /></a>
             </div>
           </div>
-          <form className="contact-form reveal" aria-label="Contact form preview">
-            <div className="form-row">
-              <label><span>Your name</span><input type="text" name="name" placeholder="How should I address you?" /></label>
-              <label><span>Email address</span><input type="email" name="email" placeholder="you@example.com" /></label>
-            </div>
-            <label><span>What would you like support with?</span><textarea name="message" rows={4} placeholder="Share only what feels comfortable..." /></label>
-            <button className="button button-light" type="button">Send a note <Arrow /></button>
-            <small>Prototype only — this form will be connected after design approval.</small>
-          </form>
+          <ContactForm />
         </div>
       </section>
 
