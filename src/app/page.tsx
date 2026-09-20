@@ -174,8 +174,8 @@ export default function Home() {
                   <div><small>When</small><span>{program.date}</span></div>
                   <div><small>Investment</small><span>{program.price}</span></div>
                 </div>
-                <a className={program.featured ? "button button-light" : "round-link"} href={program.href} aria-label={`${program.ctaLabel}: ${program.title}`}>
-                  {program.featured && <span>{program.ctaLabel}</span>}<Arrow />
+                <a className={program.featured ? "round-link round-link-light" : "round-link"} href={program.href} aria-label={`${program.ctaLabel}: ${program.title}`}>
+                  <Arrow />
                 </a>
               </article>
             ))}

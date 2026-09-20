@@ -254,6 +254,8 @@ h3 { font-size: 1.75rem; line-height: 1.18; }
 .featured .program-details small { color: #bcaebb; }
 .round-link { display: grid; width: 52px; height: 52px; place-items: center; border: 1px solid rgba(75,45,70,.3); border-radius: 50%; color: var(--plum); transition: background 200ms ease, color 200ms ease; }
 .round-link:hover { background: var(--plum); color: #fff; }
+.round-link-light { border-color: rgba(255,255,255,.62); color: #fff; }
+.round-link-light:hover { background: #f6f0f5; color: var(--plum); }
 .program-card .button { white-space: nowrap; }
 
 /* Testimonials */
@@ -316,8 +318,7 @@ h3 { font-size: 1.75rem; line-height: 1.18; }
   .hero-visual { min-height: 570px; }
   .about { gap: 8vw; }
   .program-card { grid-template-columns: 45px minmax(300px,1fr) minmax(210px,.65fr) 54px; gap: 22px; }
-  .program-card.featured { grid-template-columns: 45px 1fr .65fr; }
-  .program-card.featured .button { grid-column: 2 / -1; justify-self: start; }
+  .program-card.featured { grid-template-columns: 45px minmax(300px,1fr) minmax(210px,.65fr) 54px; }
   .contact-card { padding: 68px 56px; gap: 6vw; }
 }
 
@@ -339,7 +340,6 @@ h3 { font-size: 1.75rem; line-height: 1.18; }
   .resource-card:last-child .resource-cover { min-height: 390px; }
   .program-card, .program-card.featured { grid-template-columns: 40px 1fr 52px; }
   .program-details { grid-column: 2; }
-  .program-card.featured .button { grid-column: 2; }
   .program-card > .round-link { grid-column: 3; grid-row: 1 / 3; }
   .testimonial-layout { grid-template-columns: 1fr; }
   .small-quotes { grid-template-columns: 1fr 1fr; }
@@ -391,14 +391,13 @@ h3 { font-size: 1.75rem; line-height: 1.18; }
   .section-bottom-note { text-align: left; }
   .program-card, .program-card.featured { position: relative; display: grid; min-height: auto; grid-template-columns: 34px 1fr; gap: 18px 10px; padding: 32px 0; }
   .program-card.featured { margin: 18px 0; padding: 32px 24px; }
-  .program-main, .program-details, .program-card.featured .button { grid-column: 2; }
+  .program-main, .program-details { grid-column: 2; }
   .program-index { grid-row: 1 / 4; }
   .program-details { grid-template-columns: 1fr; gap: 14px; }
   .program-card > .round-link { position: absolute; right: 4px; bottom: 28px; grid-column: auto; grid-row: auto; width: 45px; height: 45px; }
   .program-main { padding-right: 20px; }
   .program-main h3 { font-size: 2rem; }
-  .featured .program-main { padding-right: 0; }
-  .featured .button { width: max-content; }
+  .featured .program-main { padding-right: 20px; }
   .testimonial-heading { margin-bottom: 42px; }
   .featured-quote { min-height: 530px; padding: 43px 30px; }
   .featured-quote blockquote { margin: 48px 0; font-size: 2.05rem; }

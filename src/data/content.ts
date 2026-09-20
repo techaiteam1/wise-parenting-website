@@ -75,7 +75,7 @@ export const resources: Resource[] = [
 
 export const programs: Program[] = [
   {
-    title: "Mindful Parenting From Self To Child",
+    title: "Mindful Parenting: From Self To Child",
     description: "8-weeks group coaching journey for mothers who want to parent with more calm, connection, and intention.",
     date: "New cohort · 17th Oct 2026",
     price: "10,000 PKR",

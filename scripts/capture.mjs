@@ -5,6 +5,7 @@ import path from "node:path";
 const executablePath = "C:\\Users\\TahaNaqvi\\AppData\\Local\\ms-playwright\\chromium-1234\\chrome-win64\\chrome.exe";
 const browser = await chromium.launch({ executablePath, headless: true });
 const outputDir = path.join(process.cwd(), "design-review");
+const baseUrl = process.env.BASE_URL ?? "http://127.0.0.1:3000";
 
 await mkdir(outputDir, { recursive: true });
 
@@ -35,7 +36,7 @@ for (const target of targets) {
   const browserErrors = [];
   page.on("pageerror", (error) => browserErrors.push(error.message));
 
-  await page.goto("http://127.0.0.1:3000", { waitUntil: "networkidle" });
+  await page.goto(baseUrl, { waitUntil: "networkidle" });
 
   if (target.isMobile) {
     const menuButton = page.locator(".menu-toggle");
